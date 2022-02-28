@@ -14,7 +14,7 @@ class LRUCache
   end
 
   def get(key)
-    if @map.include?(key)
+    if @map.include?(key)     #key in map
       node = @map.get(key)
       update_node!(node)
       return node.val
