@@ -24,6 +24,6 @@ class Hash
     sorted = self.sort.to_h
     key_hash = sorted.keys.map{|ele| ele.to_s.ord}.hash
     value_hash = sorted.values.map{|ele| ele.to_s.ord}.hash
-    key_hash ^ value_hash   #examples make key_hash and value_hash equal
+    key_hash + value_hash   #examples make key_hash and value_hash equal
   end
 end
