@@ -79,6 +79,17 @@ describe LRUCache do
       lru.get(2)
       list = lru.instance_variable_get(:@store)
       map = lru.instance_variable_get(:@map)
+      p list.map{|node| [node.key,node.val]}
+      p list.last
+      p "map"         #in map[2], next is pointing to prev instead
+                      # should be nil but instead pointing to 3
+      p map[1].key
+      p map[1].val
+      p map[2].key
+      p map[2].val    #map linked list not updating correctly
+      p map[3].key
+      p map[3].val
+      p map[2]
       expect(list.last).to be(map[2])
     end
   end

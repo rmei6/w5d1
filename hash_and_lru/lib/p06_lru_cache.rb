@@ -20,7 +20,7 @@ class LRUCache
       return node.val
     else
       value = @prc.call(key)
-      node = @store.append(key,value)
+      node = @store.append(key,value)     #made linked_list.append return the added node
       @map.set(key,node)
       if @map.count > @max
         eject!
@@ -47,8 +47,10 @@ class LRUCache
 
   def update_node!(node)
     # suggested helper method; move a node to the end of the list
-    @store.append(node.key,node.val)
     @store.remove(node.key)
+    @store.append(node.key,node.val)    #update linked list and hashmap
+    @map.delete(node.key)
+    @map.set(node.key,node)
   end
 
   def eject!
